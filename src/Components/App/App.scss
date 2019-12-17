@@ -32,7 +32,7 @@ background-color: #bdbdbdad;
 }
 
 
-.login-button {
+button {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -76,4 +76,28 @@ nav {
   height: 200px;
   background-size: contain;
   background-repeat: repeat-x;
+}
+
+// movie container
+.movie-card {
+  background-color: black;
+  margin: 35px;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  text-align: center;
+}
+.movie-img {
+  background-size: cover;
+  height: 50vh;
+  background-repeat: no-repeat;
+  width: 25vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-position: center;
 }
