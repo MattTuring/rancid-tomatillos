@@ -5,4 +5,5 @@ const rootReducer = combineReducers({
   movies,
 });
 
+
 export default rootReducer;
