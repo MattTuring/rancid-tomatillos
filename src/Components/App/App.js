@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import {Route} from 'react-router-dom'
+import Form from '../Form/Form'
+import Header from '../Header/Header'
 
 class App extends React.Component {
   constructor() {
@@ -19,13 +21,28 @@ class App extends React.Component {
       <div className="App">
       <Route
            exact
-           path="/"
+           path="/login"
            render={() => {
              return (
-               <h1>Movie APP is Finished</h1>
+               <>
+               <Header/>
+               <Form />
+               </>
            )
            }}
          />
+
+         <Route
+              exact
+              path="/"
+              render={() => {
+                return (
+                  <>
+                  <Header/>
+                  </>
+              )
+              }}
+            />
       </div>
     )
   }
