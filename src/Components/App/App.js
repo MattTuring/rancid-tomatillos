@@ -3,6 +3,8 @@ import './App.scss';
 import {Route} from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
+import { addMovies } from '../../actions';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +14,10 @@ class App extends React.Component {
   componentDidMount() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
     .then(response => response.json())
-    .then(data => console.log(data))
+      .then(data => {
+        this.props.addMovies(data)
+        console.log(data)
+      })
   }
 
   render(){
@@ -44,4 +49,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  addMovies: movies => dispatch( addMovies(movies) )
+})
+
+export default connect(null, mapDispatchToProps)(App)
