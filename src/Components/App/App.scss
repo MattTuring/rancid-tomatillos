@@ -1,45 +1,45 @@
-/* Login */
+@import '../variables.scss';
+* {
+  color: $primary-font-color;
+}
+
+// LOGIN
 .login {
   height: 30vh;
-  background-color: black;
-  color: white;
+  background-color: $primary-color;
   display: flex;
   flex-direction: column;
   text-align: left;
   padding: 25px;
   width: 40vw;
   margin: auto;
+  input,
+  .login-button {
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
-.login>input, .login-button {
-  height: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
 .login-button {
   font-weight: bold;
-  background-color: #ff3b00;
+  background-color: $button-color;
   height: 35px;
-  border: #0000;
-  color: white;
+  border: $primary-color;
   font-size: 18px;
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-color;
+  }
 }
 
-.login-button:hover {
-  cursor: pointer;
-  background-color: #ffbc00;
-}
-
-/* Nav */
-
+// NAV
 nav {
-  color: white;
-  background-color: black;
+  background-color: $primary-color;
   display: flex;
   justify-content: space-around;
-}
-
-nav>h1 {
-  margin-left: 25%;
+  h1 {
+    margin-left: 25%;
+  }
 }
