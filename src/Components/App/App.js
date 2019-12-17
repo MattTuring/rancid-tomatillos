@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {Route} from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
@@ -17,32 +17,28 @@ class App extends React.Component {
 
   render(){
     return (
-
       <div className="App">
-      <Route
-           exact
-           path="/login"
-           render={() => {
-             return (
-               <>
-               <Header/>
-               <Form />
-               </>
-           )
-           }}
-         />
-
-         <Route
-              exact
-              path="/"
-              render={() => {
-                return (
-                  <>
-                  <Header/>
-                  </>
-              )
-              }}
-            />
+        <Route
+          exact path="/login"
+          render={() => {
+            return (
+              <>
+                <Header/>
+                <Form />
+              </>
+            )
+          }}
+        />
+        <Route
+          exact path="/"
+          render={() => {
+            return (
+              <>
+                <Header/>
+              </>
+            )
+          }}
+      />
       </div>
     )
   }
