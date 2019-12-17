@@ -26,7 +26,7 @@ class Form extends React.Component {
           "password": this.state.password,
         })
       }).then(res => res.json())
-      .then(data =>  data)
+      .then(data => this.setState({ id: data.user.id }))
       .catch(error =>error)
   }
 

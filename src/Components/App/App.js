@@ -17,7 +17,6 @@ class App extends React.Component {
     .then(response => response.json())
       .then(data => {
         this.props.addMovies(data)
-        console.log()
       })
   }
 
