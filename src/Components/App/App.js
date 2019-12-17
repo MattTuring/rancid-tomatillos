@@ -17,32 +17,28 @@ class App extends React.Component {
 
   render(){
     return (
-
       <div className="App">
-      <Route
-           exact
-           path="/login"
-           render={() => {
-             return (
-               <>
-               <Header/>
-               <Form />
-               </>
-           )
-           }}
-         />
-
-         <Route
-              exact
-              path="/"
-              render={() => {
-                return (
-                  <>
-                  <Header/>
-                  </>
-              )
-              }}
-            />
+        <Route
+          exact path="/login"
+          render={() => {
+            return (
+              <>
+                <Header/>
+                <Form />
+              </>
+            )
+          }}
+        />
+        <Route
+          exact path="/"
+          render={() => {
+            return (
+              <>
+                <Header/>
+              </>
+            )
+          }}
+      />
       </div>
     )
   }
