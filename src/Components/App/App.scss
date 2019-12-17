@@ -1,6 +1,8 @@
-@import '../variables.scss';
+@import '../../variables.scss';
 * {
   color: $primary-font-color;
+  font-family: $primary-font;
+  border: 1px solid blue;
 }
 
 // LOGIN
@@ -13,8 +15,7 @@
   padding: 25px;
   width: 40vw;
   margin: auto;
-  input,
-  .login-button {
+  input {
     height: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -38,8 +39,16 @@
 nav {
   background-color: $primary-color;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  height: 4vw;
+  margin: 3vw 0;
   h1 {
-    margin-left: 25%;
+    margin-left: 30%;
+    font-size: 4vw;
+  }
+  button {
+    margin-left: 100%;
+    width: 12vw;
   }
 }
