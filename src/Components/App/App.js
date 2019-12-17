@@ -5,6 +5,7 @@ import Form from '../Form/Form'
 import Header from '../Header/Header'
 import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
+import MovieContainer from '../MovieContainer/MovieContainer'
 
 class App extends React.Component {
   constructor() {
@@ -16,6 +17,7 @@ class App extends React.Component {
     .then(response => response.json())
       .then(data => {
         this.props.addMovies(data)
+        console.log()
       })
   }
 
@@ -39,6 +41,7 @@ class App extends React.Component {
             return (
               <>
                 <Header/>
+                <MovieContainer/>
               </>
             )
           }}
