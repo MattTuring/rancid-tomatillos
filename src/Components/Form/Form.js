@@ -4,6 +4,7 @@ class Form extends React.Component {
   constructor() {
     super()
     this.state = {
+      id:'',
       username: '',
       password: '',
       error: null
@@ -14,7 +15,21 @@ class Form extends React.Component {
     if (this.state.username === '' || this.state.password === '') {
       this.setState({error: 'THE USERNAME OR PASSWORD IS INCORECT'})
     }
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          "email": this.state.username,
+          "password": this.state.password,
+        })
+      }).then(res => res.json())
+      .then(data =>  data)
+      .catch(error =>error)
   }
+
 
   render(){
     return (
