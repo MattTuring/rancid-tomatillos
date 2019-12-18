@@ -14,9 +14,10 @@ console.log(movies)
       return (
       <MovieCard
       key={film.id}
+      id={film.id}
       title={film.title}
       poster={film.poster_path}
-      rating={film.rating}
+      rating={film.average_rating}
       />
     )
   })}
