@@ -35,7 +35,18 @@ class App extends React.Component {
           }}
         />
         <Route
-          exact path="/users/3/ratings"
+          exact path="/users/:id/ratings"
+          render={() => {
+            return (
+              <>
+                <Header/>
+                <MovieContainer/>
+              </>
+            )
+          }}
+        />
+             <Route
+          exact path="/"
           render={() => {
             return (
               <>

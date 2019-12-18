@@ -31,7 +31,7 @@ class Form extends React.Component {
         this.props.history.push(`/users/${data.user.id}/ratings`)
         return this.setState({ id: data.user.id })
       })
-      .catch(error => error)
+      .catch(error => console.log(error))
   }
 
 
