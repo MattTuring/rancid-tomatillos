@@ -1,5 +1,8 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addLoginState } from '../../actions';
+
 
 class Form extends React.Component {
   constructor() {
@@ -8,7 +11,8 @@ class Form extends React.Component {
       id:'',
       username: '',
       password: '',
-      error: null
+      error: null,
+      loggedIn: false
     }
   }
 
@@ -28,14 +32,14 @@ class Form extends React.Component {
       })
     }).then(res => res.json())
       .then(data => { 
+        this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addLoginState(this.state))
         this.props.history.push(`/users/${data.user.id}/ratings`)
-        return this.setState({ id: data.user.id })
       })
       .catch(error => console.log(error))
   }
 
 
-  render(){
+  render() {
     return (
       <article className='login'>
         <label htmlFor='username'>USERNAME</label>
@@ -48,5 +52,10 @@ class Form extends React.Component {
     )
   }
 }
+console.log(addLoginState)
+const mapDispatchToProps = dispatch => ({
+  addLoginState: login => dispatch(addLoginState(login))
+})
 
-export default withRouter(Form)
+export default connect(null, mapDispatchToProps)(withRouter(Form))
+
