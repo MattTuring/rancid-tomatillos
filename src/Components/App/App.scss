@@ -60,7 +60,6 @@ nav {
   }
   button {
     margin-left: 100%;
-    width: 12vw;
   }
 }
 
@@ -100,4 +99,38 @@ nav {
   margin-left: auto;
   margin-right: auto;
   background-position: center;
+}
+
+.rating {
+  font-weight: bold;
+}
+// MEDIA
+
+
+@media only screen and (max-width: 1000px)  {
+  .movie-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .login-button {
+    margin-left: 45%;
+  }
+
+  .movie-img {
+    width: 32vw;
+  }
+}
+
+@media only screen and (max-width: 660px)  {
+  .movie-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-button {
+    margin-left: 25%;
+  }
+
+  .movie-img {
+    width: 63vw;
+  }
 }
