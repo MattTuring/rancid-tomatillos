@@ -17,7 +17,6 @@ class App extends React.Component {
     .then(response => response.json())
       .then(data => {
         this.props.addMovies(data)
-        console.log()
       })
   }
 
@@ -36,6 +35,17 @@ class App extends React.Component {
           }}
         />
         <Route
+          exact path="/users/:id/ratings"
+          render={() => {
+            return (
+              <>
+                <Header/>
+                <MovieContainer/>
+              </>
+            )
+          }}
+        />
+             <Route
           exact path="/"
           render={() => {
             return (
