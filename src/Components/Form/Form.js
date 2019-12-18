@@ -52,7 +52,7 @@ class Form extends React.Component {
     )
   }
 }
-console.log(addLoginState)
+
 const mapDispatchToProps = dispatch => ({
   addLoginState: login => dispatch(addLoginState(login))
 })
