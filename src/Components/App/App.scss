@@ -1,48 +1,54 @@
 @import '../../variables.scss';
+
+// General
 * {
   color: $primary-font-color;
   font-family: $primary-font;
 }
 
-// General
 .App {
-background-color: #bdbdbdad;
-    height: 100vh;
+  background-color: #bdbdbdad;
+  height: 100vh;
+}
+
+button {
+  padding: .5vw;
+  font-size: 1.3vw;
+  background-color: $button-color;
+  border: $primary-color;
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-color;
   }
+}
 
 // LOGIN
 .login {
-  height: 30vh;
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 25px;
+  padding: 1%;
   width: 40vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: -230px;
+  label {
+    margin-top: 1vw;
+    font-size: 1.3vw;
+  }
   input {
     height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 1.3vw;
     color: $primary-color;
     font-size: 1.5vw;
+    width: 98%;
   }
-}
-
-
-button {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  background-color: $button-color;
-  height: 35px;
-  border: $primary-color;
-  font-size: 18px;
-  &:hover {
-    cursor: pointer;
-    background-color: $hover-color;
+  button {
+    margin: auto;
+    margin-top: 1vw;
+    width: 98%;
+    font-size: 1.5vw;
   }
 }
 
@@ -51,7 +57,7 @@ nav {
   background-color: $primary-color;
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 1vw;
   height: 50px;
   margin-top: -40px;
   h1 {
@@ -59,7 +65,8 @@ nav {
     font-size: 4vw;
   }
   button {
-    margin-left: 100%;
+    margin-left: 150%;
+    width: 10vw;
   }
 }
 
@@ -78,6 +85,10 @@ nav {
 }
 
 // movie container
+h2 {
+  font-size: 1.9vw;
+}
+
 .movie-card {
   background-color: black;
   margin: 35px;
@@ -90,7 +101,12 @@ nav {
   margin-right: auto;
   width: 90%;
   text-align: center;
+  button {
+    margin-bottom: 1vw;
+    width: 90%;
+  }
 }
+
 .movie-img {
   background-size: cover;
   height: 50vh;
@@ -103,9 +119,11 @@ nav {
 
 .rating {
   font-weight: bold;
+  font-size: 1.3vw;
+  margin: 1vw;
 }
-// MEDIA
 
+// MEDIA
 
 @media only screen and (max-width: 1000px)  {
   .movie-container {

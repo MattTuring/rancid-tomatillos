@@ -45,7 +45,7 @@ class App extends React.Component {
             )
           }}
         />
-             <Route
+        <Route
           exact path="/"
           render={() => {
             return (
@@ -55,20 +55,17 @@ class App extends React.Component {
               </>
             )
           }}
-      />
-
-
-      <Route
-        exact path="/movies/:id"
-        render={() => {
-          return (
-            <>
-              <Header/>
-
-            </>
-          )
-        }}
-    />
+        />
+        <Route
+          exact path="/movies/:id"
+          render={() => {
+            return (
+              <>
+                <Header/>
+              </>
+            )
+          }}
+        />
       </div>
     )
   }
