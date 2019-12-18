@@ -8,7 +8,8 @@ class Form extends React.Component {
       id:'',
       username: '',
       password: '',
-      error: null
+      error: null,
+      loggedIn: false
     }
   }
 
@@ -29,13 +30,13 @@ class Form extends React.Component {
     }).then(res => res.json())
       .then(data => { 
         this.props.history.push(`/users/${data.user.id}/ratings`)
-        return this.setState({ id: data.user.id })
+        return this.setState({ id: data.user.id, loggedIn: true })
       })
       .catch(error => console.log(error))
   }
 
 
-  render(){
+  render() {
     return (
       <article className='login'>
         <label htmlFor='username'>USERNAME</label>
