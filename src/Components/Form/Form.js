@@ -13,7 +13,6 @@ class Form extends React.Component {
   }
 
   login = () => {
-    console.log(this.props.history)
     if (this.state.username === '' || this.state.password === '') {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
@@ -29,7 +28,7 @@ class Form extends React.Component {
       })
     }).then(res => res.json())
       .then(data => { 
-      this.props.history.push(`/users/${data.user.id}/ratings`)
+        this.props.history.push(`/users/${data.user.id}/ratings`)
         return this.setState({ id: data.user.id })
       })
       .catch(error => error)
