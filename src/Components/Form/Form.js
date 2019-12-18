@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 class Form extends React.Component {
   constructor() {
@@ -12,8 +13,9 @@ class Form extends React.Component {
   }
 
   login = () => {
+    console.log(this.props.history)
     if (this.state.username === '' || this.state.password === '') {
-      this.setState({error: 'THE USERNAME OR PASSWORD IS INCORECT'})
+      this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
     fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', {
       method: 'POST',
@@ -21,13 +23,16 @@ class Form extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({
-          "email": this.state.username,
-          "password": this.state.password,
-        })
-      }).then(res => res.json())
-      .then(data => this.setState({ id: data.user.id }))
-      .catch(error =>error)
+      body: JSON.stringify({
+        "email": this.state.username,
+        "password": this.state.password,
+      })
+    }).then(res => res.json())
+      .then(data => { 
+      this.props.history.push(`/users/${data.user.id}/ratings`)
+        return this.setState({ id: data.user.id })
+      })
+      .catch(error => error)
   }
 
 
@@ -45,4 +50,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default withRouter(Form)
