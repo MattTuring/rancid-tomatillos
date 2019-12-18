@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addLoginState } from '../../actions';
 
 
-class Form extends React.Component {
+export class Form extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -53,7 +53,7 @@ class Form extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addLoginState: login => dispatch(addLoginState(login))
 })
 
