@@ -3,14 +3,9 @@ import {connect} from 'react-redux'
 import MovieCard from '../MovieCard/MovieCard'
 
 const MovieContainer = ({movies}) => {
-
-console.log(movies)
-
-
   return(
     <div className='movie-container'>
     {movies[0] && movies.map(film => {
-      console.log(film)
       return (
       <MovieCard
       key={film.id}

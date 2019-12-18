@@ -3,7 +3,7 @@ export const addMovies = movies => ({
     movies
 });
   
-export const addMovies = login => ({
+export const addLoginState = login => ({
   type: 'ADD_LOGIN_STATE',
   login
 });
