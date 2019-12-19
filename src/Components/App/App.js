@@ -5,7 +5,8 @@ import Form from '../Form/Form'
 import Header from '../Header/Header'
 import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
-import MovieContainer from '../MovieContainer/MovieContainer'
+import MovieContainer from '../MovieContainer/MovieContainer';
+import MovieShowPage from '../MovieShowPage/MovieShowPage';
 
 class App extends React.Component {
   constructor() {

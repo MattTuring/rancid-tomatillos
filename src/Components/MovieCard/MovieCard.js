@@ -8,7 +8,7 @@ const MovieCard = ({title, poster, rating, id}) => {
     <h2>{title.toUpperCase()}</h2>
     <div className='movie-img' style={{backgroundImage: `url(${poster})`}}/>
     <div className='rating'>AVERAGE RATING: {rating}</div>
-    <Link to={"/movies/" + id}>
+    <Link to={`/movies/${id}`}>
       <button>MORE</button>
     </Link>
   </article>
