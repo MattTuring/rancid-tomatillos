@@ -1,5 +1,8 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addLoginState } from '../../actions';
+
 
 class Form extends React.Component {
   constructor() {
@@ -8,7 +11,8 @@ class Form extends React.Component {
       id:'',
       username: '',
       password: '',
-      error: null
+      error: null,
+      loggedIn: false
     }
   }
 
@@ -35,7 +39,7 @@ class Form extends React.Component {
   }
 
 
-  render(){
+  render() {
     return (
       <article className='login'>
         <label htmlFor='username'>USERNAME</label>
@@ -49,4 +53,9 @@ class Form extends React.Component {
   }
 }
 
-export default withRouter(Form)
+const mapDispatchToProps = dispatch => ({
+  addLoginState: login => dispatch(addLoginState(login))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(Form))
+
