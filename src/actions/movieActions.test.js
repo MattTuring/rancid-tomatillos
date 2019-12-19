@@ -30,5 +30,20 @@ describe('actions', () => {
     
         // Expectation
         expect(result).toEqual(expectedAction);
+    });
+    
+    it('should have a type of UPDATE_IS_LOGGEDIN', () => {
+        // Setup
+        const login = {};
+        const expectedAction = {
+          type: 'UPDATE_IS_LOGGEDIN',
+          login:{}
+        };
+    
+        // Execution
+        const result = actions.updateLoggedIn(login);
+    
+        // Expectation
+        expect(result).toEqual(expectedAction);
       });
   });
