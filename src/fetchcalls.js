@@ -17,7 +17,7 @@ export const postUser = (url) => {
       })
 }
 
-export const retrieveMovies = (url) => {
+export const retrieveMovies = () => {
     return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
      .then(response => {
         if (!response.ok) {
