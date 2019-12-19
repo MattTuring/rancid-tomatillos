@@ -23,9 +23,9 @@ export class Form extends React.Component {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
     postUser('https://rancid-tomatillos.herokuapp.com/api/v1/login')
-      .then(data => { 
+      .then(data => {
         this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addLoginState(this.state))
-        this.props.history.push(`/users/${data.user.id}/ratings`)
+        this.props.history.push(`/users/${data.user.id}`)
       })
       .catch(error => console.log(error))
   }
@@ -50,4 +50,3 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Form))
-
