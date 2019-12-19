@@ -31,9 +31,9 @@ class Form extends React.Component {
         "password": this.state.password,
       })
     }).then(res => res.json())
-      .then(data => { 
-        this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addLoginState(this.state))
-        this.props.history.push(`/users/${data.user.id}/ratings`)
+      .then(data => {
+        this.props.history.push(`/users/${data.user.id}`)
+        return this.setState({ id: data.user.id })
       })
       .catch(error => console.log(error))
   }
@@ -45,7 +45,7 @@ class Form extends React.Component {
         <label htmlFor='username'>USERNAME</label>
         <input name='username' id='username' type='text' placeholder='USERNAME' onChange={(event) => this.setState({username:event.target.value})}/>
         <label htmlFor='password'>PASSWORD</label>
-        <input name='password' id='password' type='text' placeholder='PASSWORD' onChange={(event) => this.setState({password:event.target.value})}/>
+        <input name='password' id='password' type='password' placeholder='PASSWORD' onChange={(event) => this.setState({password:event.target.value})}/>
         <button className='login-button' onClick={this.login}>LOG IN</button>
         {this.state.error}
       </article>
