@@ -123,6 +123,23 @@ h2 {
   margin: 1vw;
 }
 
+// SHOW PAGE
+.movie-show-page {
+  background-color: $primary-color;
+  height: 15vw;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 1vw;
+  button {
+    float: right;
+  }
+}
+
+.movie-info-container {
+  display: flex;
+}
+
 // MEDIA
 
 @media only screen and (max-width: 1000px)  {
