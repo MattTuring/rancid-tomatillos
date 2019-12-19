@@ -131,19 +131,26 @@ h2 {
   text-align: center;
   margin-top: -10vw;
   padding: 1vw;
-  button {
-    float: right;
-  }
   p {
     font-size: 1.3vw;
   }
 }
 
+.go-back-button {
+  float: right;
+  background-color: gray;
+}
+
+.rate-button {
+  width: 80%;
+}
+
 .movie-poster {
-  height: 30vw;
+  height: 40vh;
   width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .movie-info-container {
