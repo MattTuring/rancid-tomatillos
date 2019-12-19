@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard should match the snapshot with all data passed in correctly 1`] = `
+<article
+  className="movie-card"
+>
+  <h2>
+    FOSTER MOVIE
+  </h2>
+  <div
+    className="movie-img"
+    style={
+      Object {
+        "backgroundImage": "url(undefined)",
+      }
+    }
+  />
+  <div
+    className="rating"
+  >
+    AVERAGE RATING: 
+  </div>
+  <Link
+    to="/movies/undefined"
+  >
+    <button>
+      MORE
+    </button>
+  </Link>
+</article>
+`;

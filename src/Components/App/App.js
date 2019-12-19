@@ -5,7 +5,8 @@ import Form from '../Form/Form'
 import Header from '../Header/Header'
 import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
-import MovieContainer from '../MovieContainer/MovieContainer';
+import MovieContainer from '../MovieContainer/MovieContainer'
+import { retrieveMovies } from '../../fetchcalls';
 import MovieShowPage from '../MovieShowPage/MovieShowPage';
 
 class App extends React.Component {
@@ -14,8 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-    .then(response => response.json())
+    retrieveMovies('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
       .then(data => {
         this.props.addMovies(data)
       })

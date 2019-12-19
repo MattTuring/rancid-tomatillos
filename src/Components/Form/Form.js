@@ -2,9 +2,11 @@ import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addLoginState } from '../../actions';
+import {postUser} from '../../fetchcalls';
 
 
-class Form extends React.Component {
+
+export class Form extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -20,20 +22,10 @@ class Form extends React.Component {
     if (this.state.username === '' || this.state.password === '') {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "email": this.state.username,
-        "password": this.state.password,
-      })
-    }).then(res => res.json())
-      .then(data => {
-        this.props.history.push(`/users/${data.user.id}`)
-        return this.setState({ id: data.user.id })
+    postUser('https://rancid-tomatillos.herokuapp.com/api/v1/login')
+      .then(data => { 
+        this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addLoginState(this.state))
+        this.props.history.push(`/users/${data.user.id}/ratings`)
       })
       .catch(error => console.log(error))
   }
@@ -53,7 +45,7 @@ class Form extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addLoginState: login => dispatch(addLoginState(login))
 })
 
