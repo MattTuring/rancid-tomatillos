@@ -16,3 +16,13 @@ export const postUser = (url) => {
         return response.json();
       })
 }
+
+export const retrieveMovies = (url) => {
+    return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+     .then(response => {
+        if (!response.ok) {
+          throw Error('Error fetching ideas');
+        }
+        return response.json();
+      })
+}
