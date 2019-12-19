@@ -16,4 +16,19 @@ describe('actions', () => {
       // Expectation
       expect(result).toEqual(expectedAction);
     });
+
+    it('should have a type of ADD_LOGIN_STATE', () => {
+        // Setup
+        const login = {};
+        const expectedAction = {
+          type: 'ADD_LOGIN_STATE',
+          login:{}
+        };
+    
+        // Execution
+        const result = actions.addLoginState(login);
+    
+        // Expectation
+        expect(result).toEqual(expectedAction);
+      });
   });
