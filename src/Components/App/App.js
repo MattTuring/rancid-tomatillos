@@ -7,6 +7,7 @@ import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
 import MovieContainer from '../MovieContainer/MovieContainer'
 import { retrieveMovies } from '../../fetchcalls';
+import MovieShowPage from '../MovieShowPage/MovieShowPage';
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +36,7 @@ class App extends React.Component {
           }}
         />
         <Route
-          exact path="/users/:id/ratings"
+          exact path="/users/:id"
           render={() => {
             return (
               <>
@@ -57,22 +58,25 @@ class App extends React.Component {
           }}
         />
         <Route
-          exact path="/movies/:id"
-          render={() => {
-            return (
-              <>
-                <Header/>
-              </>
-            )
-          }}
-        />
+          exact path="/movies/:id" render={({ match }) => {
+            let movie = this.props.movies.find(movie => movie.id === parseInt(match.params.id))
+            return movie &&
+            <>
+              <Header/>
+              <MovieShowPage movie={movie}/>
+            </>
+          }} />
       </div>
     )
   }
 }
 
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
 const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch( addMovies(movies) )
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
