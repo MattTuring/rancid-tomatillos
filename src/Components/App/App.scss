@@ -126,14 +126,24 @@ h2 {
 // SHOW PAGE
 .movie-show-page {
   background-color: $primary-color;
-  height: 15vw;
   width: 80%;
   margin: auto;
   text-align: center;
+  margin-top: -10vw;
   padding: 1vw;
   button {
     float: right;
   }
+  p {
+    font-size: 1.3vw;
+  }
+}
+
+.movie-poster {
+  height: 30vw;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .movie-info-container {
