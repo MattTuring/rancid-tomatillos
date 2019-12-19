@@ -40,7 +40,7 @@ class Form extends React.Component {
       <article className='login'>
         <label htmlFor='username'>USERNAME</label>
         <input name='username' id='username' type='text' placeholder='USERNAME' onChange={(event) => this.setState({username:event.target.value})}/>
-        <label htmlFor='password'>PASSWORD</labgsel>
+        <label htmlFor='password'>PASSWORD</label>
         <input name='password' id='password' type='password' placeholder='PASSWORD' onChange={(event) => this.setState({password:event.target.value})}/>
         <button className='login-button' onClick={this.login}>LOG IN</button>
         {this.state.error}
