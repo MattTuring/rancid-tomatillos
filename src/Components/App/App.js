@@ -3,7 +3,7 @@ import './App.scss';
 import {Route} from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
-import { addMovies } from '../../actions';
+import { addMovies, addRatings } from '../../actions';
 import { connect } from 'react-redux';
 import MovieContainer from '../MovieContainer/MovieContainer'
 import { retrieveMovies } from '../../fetchcalls';
