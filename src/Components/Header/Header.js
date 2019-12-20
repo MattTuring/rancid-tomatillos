@@ -10,21 +10,20 @@ const Header = (login) => {
   return (
     <>
     <div className='header-background'>
-    <nav>
-    <h1>RANCID TOMATILLOS</h1>
-    {login.login.loggedIn ? <Link to='/'>
-    <button className='login-button' onClick={() => { login.updateLoggedIn({
-      id:'',
-      username: '',
-      password: '',
-      error: null,
-      loggedIn: false
-    }) }}>LOG&nbsp;OUT</button>
-    </Link> : <Link to='/login'>
-              <button className='login-button'>LOG&nbsp;IN</button>
-    </Link>}
-
-    </nav>
+      <nav>
+        <h1>RANCID TOMATILLOS</h1>
+        {login.login.loggedIn ? <Link to='/'>
+        <button className='login-button' onClick={() => { login.updateLoggedIn({
+          id:'',
+          username: '',
+          password: '',
+          error: null,
+          loggedIn: false
+        }) }}>LOG&nbsp;OUT</button>
+        </Link> : <Link to='/login'>
+          <button className='login-button'>LOG&nbsp;IN</button>
+        </Link>}
+      </nav>
     </div>
 
     <div className='film-strip' style={{backgroundImage: `url(${filmStrip})`}}>
