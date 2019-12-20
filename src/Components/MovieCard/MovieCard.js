@@ -2,13 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const MovieCard = ({title, poster, rating, id, loggedIn}) => {
+const MovieCard = ({title, poster, rating, id, loggedIn, ratings}) => {
+const showRating = () => {
+  return ratings.find(rating => rating.id === id)
+}
+
   return (
   <article className='movie-card'>
     <h2>{title.toUpperCase()}</h2>
     <div className='movie-img' style={{backgroundImage: `url(${poster})`}}/>
     <div className='rating'>AVERAGE RATING: {Math.round(rating)}</div>
-    {loggedIn ? <p>HI</p> : <></>}
+    {loggedIn ? showRating() : <></>}
     <Link to={`/movies/${id}`}>
       <button>MORE</button>
     </Link>
@@ -17,7 +21,8 @@ const MovieCard = ({title, poster, rating, id, loggedIn}) => {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.login.loggedIn
+  loggedIn: state.login.loggedIn,
+  ratings: state.ratings
 })
 
 export default connect(mapStateToProps)(MovieCard);

@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import RatingModal from '../RatingModal/RatingModal'
-import {connect} from 'react-redux'
+import RatingModal from '../RatingModal/RatingModal';
+import {connect} from 'react-redux';
+import { addRatings } from '../../actions';
 
 class MovieShowPage extends React.Component {
 constructor() {
@@ -24,7 +25,7 @@ componentDidMount() {
   }
 
   addRating = (event) => {
-    if (typeof parseInt(event.target.id) === 'number'&& event.target.id.length > 0) {
+    if (typeof parseInt(event.target.id) === 'number' && event.target.id.length > 0) {
       this.setState({rating: parseInt(event.target.id)})
     }
   }
@@ -42,13 +43,14 @@ componentDidMount() {
         })
 
   })
-  .then(response => console.log(response.json()))
+  .then(response => response.json())
+  .then(this.props.addRatings(this.props.movie.id, this.state.rating))
 }
 
 render() {
   return (
   <section className='movie-show-page'>
-    <Link to='/'>
+    <Link to='/users/3'>
       <button className='go-back-button'>GO BACK</button>
     </Link>
     <div className='movie-info-container'>
@@ -59,11 +61,10 @@ render() {
         <p>RELEASE DATE: {this.state.date}</p>
         <p>AVERAGE RATING: {this.props.movie.average_rating}</p>
         <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
-          {this.state.show && <RatingModal show={this.show} addRating={this.addRating} submit={this.submitRating} rating={this.state.rating}/>}
+          {this.state.show && <RatingModal show={this.show} addRating={this.addRating} submit={this.submitRating} rating={this.state.rating} id={this.props.movie.id}/>}
       </div>
     </div>
   </section>
-
   )
 }
 }
@@ -71,4 +72,8 @@ const mapStateToProps = state => ({
   userId: state.login.id
 })
 
-export default connect(mapStateToProps)(MovieShowPage);
+const mapDispatchToProps = dispatch => ({
+  addRatings: (id, rating) => dispatch(addRatings({ id: id, rating: rating }))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
