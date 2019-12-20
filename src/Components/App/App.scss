@@ -157,6 +157,58 @@ h2 {
   display: flex;
 }
 
+// modal
+.modal {
+  position: absolute;
+  z-index: 100;
+  top: 35%;
+  background-color: #7f7f7f;
+  margin-left: 10px;
+  width: 61%;
+  height: 300px;
+  left: 28%;
+}
+
+.ratings {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: inherit;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.ratings>span {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ratings>span:hover {
+  color: #12e412;
+  cursor: pointer;
+}
+
+.x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #4c4c4c;
+    border-radius: 3px;
+}
+
+.x:hover {
+  background-color: #7f7f7f;
+  }
+
+  .submit-button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+  }
 // MEDIA
 
 @media only screen and (max-width: 1000px)  {
