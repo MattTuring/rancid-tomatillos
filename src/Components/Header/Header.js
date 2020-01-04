@@ -6,7 +6,6 @@ import { updateLoggedIn } from '../../actions';
 
 
 const Header = (login) => {
-  console.log(login)
   return (
     <>
     <div className='header-background'>
