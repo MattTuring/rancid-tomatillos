@@ -4,14 +4,14 @@ import filmStrip from '../../Images/film-strip.png'
 import { connect } from 'react-redux'
 import { updateLoggedIn } from '../../actions';
 
-const Header = ({ user }) => {
+const Header = ({ user, updateLoggedIn }) => {
   return (
     <>
     <div className='header-background'>
       <nav>
         <h1>RANCID TOMATILLOS</h1>
         {user.loggedIn ? <Link to='/'>
-        <button className='login-button' onClick={() => { user.updateLoggedIn({
+        <button className='login-button' onClick={() => { updateLoggedIn({
           id:'',
           username: '',
           ratings: [],

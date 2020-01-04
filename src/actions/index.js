@@ -13,7 +13,7 @@ export const addUserState = userInfo => ({
   userInfo
 });
 
-export const updateLoggedIn = login => ({
+export const updateLoggedIn = userInfo => ({
   type: 'UPDATE_IS_LOGGEDIN',
-  login
+  userInfo
 });
