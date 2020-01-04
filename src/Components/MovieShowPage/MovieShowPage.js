@@ -17,7 +17,8 @@ constructor() {
   componentDidMount() {
       let dateArray = this.props.movie.release_date.split('-');
       let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
-      this.setState({date: date})
+    this.setState({ date: date })
+    this.getRatings()
   }
 
   show = () => {
@@ -47,11 +48,20 @@ constructor() {
   }
 
   getRatings = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.userId}/ratings`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => this.props.addRatings(data))
     // .then(this.props.addRatings(this.props.movie.id, this.state.rating))
     //update global store
+  }
+
+  findYourRating() {
+    let rating = this.props.user.ratings.find(rating => rating.movie_id === this.props.movie.id)
+    if (rating) {
+      return rating.rating
+    } else {
+      return false
+    }
   }
 
   render() {
@@ -67,8 +77,8 @@ constructor() {
           <p>OVERVIEW: {this.props.movie.overview}</p>
           <p>RELEASE DATE: {this.state.date}</p>
           <p>AVERAGE RATING: {this.props.movie.average_rating}</p>
-          {this.state.currentRating ?
-            <p>YOUR RATING: {this.state.currentRating}</p> :
+          {this.findYourRating() ?
+            <p>YOUR RATING: {this.findYourRating()}</p> :
             //logic: iterate through store.movies and store.user.ratings to match movies and find rating
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
           }
@@ -87,12 +97,12 @@ constructor() {
 }
 
 const mapStateToProps = state => ({
-  userId: state.user.id,
-  ratings: state.user.ratings
+  movies: state.movies,
+  user: state.user,
 })
 
 const mapDispatchToProps = dispatch => ({
-  addRatings: (id, rating) => dispatch(addRatings({ id: id, rating: rating }))
+  addRatings: (ratings) => dispatch(addRatings( ratings ))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
