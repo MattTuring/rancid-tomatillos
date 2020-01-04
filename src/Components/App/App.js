@@ -40,8 +40,8 @@ class App extends React.Component {
           render={() => {
             return (
               <>
-                <Header/>
-                <MovieContainer/>
+                <Header />
+                <MovieContainer />
               </>
             )
           }}
@@ -51,8 +51,8 @@ class App extends React.Component {
           render={() => {
             return (
               <>
-                <Header/>
-                <MovieContainer/>
+                <Header />
+                <MovieContainer />
               </>
             )
           }}
@@ -62,8 +62,8 @@ class App extends React.Component {
             let movie = this.props.movies.find(movie => movie.id === parseInt(match.params.id))
             return movie &&
             <>
-              <Header/>
-              <MovieShowPage movie={movie}/>
+              <Header />
+              <MovieShowPage movie={movie} />
             </>
           }} />
       </div>

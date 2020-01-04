@@ -8,9 +8,9 @@ export const addRatings = ratings => ({
     ratings
 });
 
-export const addLoginState = login => ({
-  type: 'ADD_LOGIN_STATE',
-  login
+export const addUserState = userInfo => ({
+  type: 'ADD_USER_STATE',
+  userInfo
 });
 
 export const updateLoggedIn = login => ({

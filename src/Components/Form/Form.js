@@ -1,10 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addLoginState } from '../../actions';
-import {postUser} from '../../fetchcalls';
-
-
+import { addUserState } from '../../actions';
+import { postUser } from '../../fetchcalls';
 
 export class Form extends React.Component {
   constructor() {
@@ -12,24 +10,29 @@ export class Form extends React.Component {
     this.state = {
       id:'',
       username: '',
-      password: '',
+      passwordLength: '',
       error: null,
-      loggedIn: false
+      loggedIn: false,
+      ratings: []
     }
   }
 
   login = () => {
-    if (this.state.username === '' || this.state.password === '') {
+    if (this.state.username === '' || this.state.passwordLength > 0) {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
     postUser('https://rancid-tomatillos.herokuapp.com/api/v1/login')
       .then(data => {
-        this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addLoginState(this.state))
+        this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addUserState({
+          id: this.state.id,
+          username: this.state.username,
+          ratings: this.state.ratings,
+          loggedIn: this.state.loggedIn
+        }))
         this.props.history.push(`/users/${data.user.id}`)
       })
       .catch(error => console.log(error))
   }
-
 
   render() {
     return (
@@ -37,7 +40,7 @@ export class Form extends React.Component {
         <label htmlFor='username'>USERNAME</label>
         <input name='username' id='username' type='text' placeholder='USERNAME' onChange={(event) => this.setState({username:event.target.value})}/>
         <label htmlFor='password'>PASSWORD</label>
-        <input name='password' id='password' type='password' placeholder='PASSWORD' onChange={(event) => this.setState({password:event.target.value})}/>
+        <input name='password' id='password' type='password' placeholder='PASSWORD' onChange={(event) => this.setState({passwordLength:event.target.value.length})}/>
         <button className='login-button' onClick={this.login}>LOG IN</button>
         {this.state.error}
       </article>
@@ -46,7 +49,7 @@ export class Form extends React.Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addLoginState: login => dispatch(addLoginState(login))
+  addUserState: userinfo => dispatch(addUserState(userinfo))
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Form))

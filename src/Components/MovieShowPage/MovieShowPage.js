@@ -78,8 +78,8 @@ constructor() {
   }
 }
 const mapStateToProps = state => ({
-  userId: state.login.id,
-  ratings: state.ratings
+  userId: state.user.id,
+  ratings: state.user.ratings
 })
 
 const mapDispatchToProps = dispatch => ({

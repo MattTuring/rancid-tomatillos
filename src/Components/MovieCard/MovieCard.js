@@ -21,8 +21,8 @@ const showRating = () => {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.login.loggedIn,
-  ratings: state.ratings
+  loggedIn: state.user.loggedIn,
+  ratings: state.user.ratings
 })
 
 export default connect(mapStateToProps)(MovieCard);

@@ -9,29 +9,29 @@ describe('actions', () => {
         type: 'ADD_MOVIES',
         movies:[]
       };
-  
+
       // Execution
       const result = actions.addMovies(movies);
-  
+
       // Expectation
       expect(result).toEqual(expectedAction);
     });
 
-    it('should have a type of ADD_LOGIN_STATE', () => {
+    it('should have a type of ADD_USER_STATE', () => {
         // Setup
         const login = {};
         const expectedAction = {
-          type: 'ADD_LOGIN_STATE',
+          type: 'ADD_USER_STATE',
           login:{}
         };
-    
+
         // Execution
-        const result = actions.addLoginState(login);
-    
+        const result = actions.addUserState(userInfo);
+
         // Expectation
         expect(result).toEqual(expectedAction);
     });
-    
+
     it('should have a type of UPDATE_IS_LOGGEDIN', () => {
         // Setup
         const login = {};
@@ -39,10 +39,10 @@ describe('actions', () => {
           type: 'UPDATE_IS_LOGGEDIN',
           login:{}
         };
-    
+
         // Execution
         const result = actions.updateLoggedIn(login);
-    
+
         // Expectation
         expect(result).toEqual(expectedAction);
       });

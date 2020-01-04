@@ -1,22 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import filmStrip from '../../Images/film-strip.png'
 import { connect } from 'react-redux'
 import { updateLoggedIn } from '../../actions';
 
-
-const Header = (login) => {
+const Header = (user) => {
   return (
     <>
     <div className='header-background'>
       <nav>
         <h1>RANCID TOMATILLOS</h1>
-        {login.login.loggedIn ? <Link to='/'>
-        <button className='login-button' onClick={() => { login.updateLoggedIn({
+        {user.loggedIn ? <Link to='/'>
+        <button className='login-button' onClick={() => { user.updateLoggedIn({
           id:'',
           username: '',
-          password: '',
-          error: null,
+          ratings: [],
           loggedIn: false
         }) }}>LOG&nbsp;OUT</button>
         </Link> : <Link to='/login'>
