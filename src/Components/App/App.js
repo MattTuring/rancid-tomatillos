@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
 import { addMovies, addRatings } from '../../actions';

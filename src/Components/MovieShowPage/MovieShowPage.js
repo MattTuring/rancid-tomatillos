@@ -47,14 +47,6 @@ constructor() {
     .catch(error => console.log(error))
   }
 
-  getRatings = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`)
-    .then(response => response.json())
-    .then(data => this.props.addRatings(data))
-    // .then(this.props.addRatings(this.props.movie.id, this.state.rating))
-    //update global store
-  }
-
   findYourRating() {
     let rating = this.props.user.ratings.find(rating => rating.movie_id === this.props.movie.id)
     if (rating) {
@@ -79,7 +71,6 @@ constructor() {
           <p>AVERAGE RATING: {this.props.movie.average_rating}</p>
           {this.findYourRating() ?
             <p>YOUR RATING: {this.findYourRating()}</p> :
-            //logic: iterate through store.movies and store.user.ratings to match movies and find rating
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
           }
           {this.state.show && <RatingModal

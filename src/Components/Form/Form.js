@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addUserState } from '../../actions';
+import { addUserState, addRatings } from '../../actions';
 import { postUser } from '../../fetchcalls';
 
 export class Form extends React.Component {
@@ -17,6 +17,12 @@ export class Form extends React.Component {
     }
   }
 
+  getRatings = () => {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.state.id}/ratings`)
+    .then(response => response.json())
+    .then(data => this.props.addRatings(data))
+  }
+
   login = () => {
     if (this.state.username === '' || this.state.passwordLength > 0) {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
@@ -30,6 +36,7 @@ export class Form extends React.Component {
           loggedIn: this.state.loggedIn
         }))
         this.props.history.push(`/users/${data.user.id}`)
+        this.getRatings();
       })
       .catch(error => console.log(error))
   }
@@ -49,7 +56,8 @@ export class Form extends React.Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addUserState: userinfo => dispatch(addUserState(userinfo))
+  addUserState: userinfo => dispatch(addUserState(userinfo)),
+  addRatings: (ratings) => dispatch(addRatings( ratings ))
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Form))
