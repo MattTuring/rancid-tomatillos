@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import RatingModal from '../RatingModal/RatingModal';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { getRatings } from '../../fetchcalls';
+import { addRatings } from '../../actions';
 
 class MovieShowPage extends React.Component {
 constructor() {
@@ -41,7 +43,8 @@ constructor() {
           "rating": this.state.currentRating
       })
     })
-    // .then(() => this.getRatings())
+    .then(() => getRatings(this.props.user.id))
+    .then(data => this.props.addRatings(data))
     .catch(error => console.log(error))
   }
 
@@ -90,4 +93,8 @@ const mapStateToProps = state => ({
   user: state.user,
 })
 
-export default connect(mapStateToProps)(MovieShowPage);
+export const mapDispatchToProps = dispatch => ({
+  addRatings: (ratings) => dispatch(addRatings( ratings ))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
