@@ -4,7 +4,10 @@ export const user = (state = {}, action) => {
             return action.userInfo;
         case 'UPDATE_IS_LOGGEDIN':
             return action.userInfo
-      default:
-        return state;
+        case 'ADD_RATING':
+            state.ratings = [action.ratings]
+            return state;
+        default:
+            return state;
     }
-  }
+}
