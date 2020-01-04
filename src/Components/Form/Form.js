@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserState, addRatings } from '../../actions';
-import { postUser } from '../../fetchcalls';
+import { postUser, getRatings } from '../../fetchcalls';
 
 export class Form extends React.Component {
   constructor() {
@@ -14,12 +14,6 @@ export class Form extends React.Component {
       error: null,
       loggedIn: false,
     }
-  }
-
-  getRatings = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.state.id}/ratings`)
-    .then(response => response.json())
-    .then(data => this.props.addRatings(data))
   }
 
   login = () => {
@@ -35,7 +29,8 @@ export class Form extends React.Component {
           loggedIn: this.state.loggedIn
         }))
         this.props.history.push(`/users/${data.user.id}`)
-        this.getRatings();
+        getRatings(this.state.id)
+          .then(data => this.props.addRatings(data))
       })
       .catch(error => console.log(error))
   }

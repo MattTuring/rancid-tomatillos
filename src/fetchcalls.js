@@ -26,3 +26,8 @@ export const retrieveMovies = () => {
         return response.json();
       })
 }
+
+export const getRatings = (id) => {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
+    .then(response => response.json())
+  }
