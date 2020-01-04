@@ -4,7 +4,7 @@ import filmStrip from '../../Images/film-strip.png'
 import { connect } from 'react-redux'
 import { updateLoggedIn } from '../../actions';
 
-const Header = (user) => {
+const Header = ({ user }) => {
   return (
     <>
     <div className='header-background'>
@@ -30,8 +30,9 @@ const Header = (user) => {
 }
 
 const mapStateToProps = state => ({
-  login: state.login
+  user: state.user
 })
+
 const mapDispatchToProps = dispatch => ({
   updateLoggedIn: login => dispatch(updateLoggedIn(login))
 })

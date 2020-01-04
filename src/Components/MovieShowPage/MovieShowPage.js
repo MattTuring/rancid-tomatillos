@@ -18,30 +18,29 @@ constructor() {
       let dateArray = this.props.movie.release_date.split('-');
       let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
       this.setState({date: date})
+  }
+
+  show = () => {
+    this.setState({show: !this.state.show})
+  }
+
+  addRating = (event) => {
+    if (typeof parseInt(event.target.id) === 'number' && event.target.id.length > 0) {
+      this.setState({rating: parseInt(event.target.id)})
     }
+  }
 
-    show = () => {
-      this.setState({show: !this.state.show})
-    }
-
-    addRating = (event) => {
-      if (typeof parseInt(event.target.id) === 'number' && event.target.id.length > 0) {
-        this.setState({rating: parseInt(event.target.id)})
-      }
-    }
-
-    submitRating = () => {
-      fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.userId}/ratings`, {
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              "movie_id": this.props.movie.id,
-              "rating": this.state.rating
-          })
-
+  submitRating = () => {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.userId}/ratings`, {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          "movie_id": this.props.movie.id,
+          "rating": this.state.rating
+      })
     })
     .then(response => response.json())
     .then(this.props.addRatings(this.props.movie.id, this.state.rating))
@@ -77,6 +76,7 @@ constructor() {
     )
   }
 }
+
 const mapStateToProps = state => ({
   userId: state.user.id,
   ratings: state.user.ratings
