@@ -9,7 +9,7 @@ constructor() {
   super()
   this.state = {
     show: false,
-    rating: null,
+    currentRating: null,
     date: null
   }
 }
@@ -26,7 +26,7 @@ constructor() {
 
   addRating = (event) => {
     if (typeof parseInt(event.target.id) === 'number' && event.target.id.length > 0) {
-      this.setState({rating: parseInt(event.target.id)})
+      this.setState({currentRating: parseInt(event.target.id)})
     }
   }
 
@@ -39,11 +39,19 @@ constructor() {
       },
       body: JSON.stringify({
           "movie_id": this.props.movie.id,
-          "rating": this.state.rating
+          "rating": this.state.currentRating
       })
     })
+    .then(() => this.getRatings())
+    .catch(error => console.log(error))
+  }
+
+  getRatings = () => {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.userId}/ratings`)
     .then(response => response.json())
-    .then(this.props.addRatings(this.props.movie.id, this.state.rating))
+    .then(data => console.log(data))
+    // .then(this.props.addRatings(this.props.movie.id, this.state.rating))
+    //update global store
   }
 
   render() {
@@ -59,15 +67,16 @@ constructor() {
           <p>OVERVIEW: {this.props.movie.overview}</p>
           <p>RELEASE DATE: {this.state.date}</p>
           <p>AVERAGE RATING: {this.props.movie.average_rating}</p>
-          {this.state.rating ?
-            <p>YOUR RATING: {this.state.rating}</p> :
+          {this.state.currentRating ?
+            <p>YOUR RATING: {this.state.currentRating}</p> :
+            //logic: iterate through store.movies and store.user.ratings to match movies and find rating
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
           }
           {this.state.show && <RatingModal
             show={this.show}
             addRating={this.addRating}
             submit={this.submitRating}
-            rating={this.state.rating}
+            rating={this.state.currentRating}
             id={this.props.movie.id}
             />}
         </div>
