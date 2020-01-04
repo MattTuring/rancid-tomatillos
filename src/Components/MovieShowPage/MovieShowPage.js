@@ -66,7 +66,7 @@ constructor() {
           <h2>{this.props.movie.title.toUpperCase()}</h2>
           <p>OVERVIEW: {this.props.movie.overview}</p>
           <p>RELEASE DATE: {this.state.date}</p>
-          <p>AVERAGE RATING: {this.props.movie.average_rating}</p>
+          <p>AVERAGE RATING: {Math.round(this.props.movie.average_rating)}</p>
           {this.findYourRating() ?
             <p>YOUR RATING: {this.findYourRating()}</p> :
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
