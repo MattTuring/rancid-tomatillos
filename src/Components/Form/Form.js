@@ -13,7 +13,6 @@ export class Form extends React.Component {
       passwordLength: '',
       error: null,
       loggedIn: false,
-      ratings: []
     }
   }
 
@@ -32,7 +31,7 @@ export class Form extends React.Component {
         this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addUserState({
           id: this.state.id,
           username: this.state.username,
-          ratings: this.state.ratings,
+          ratings: [],
           loggedIn: this.state.loggedIn
         }))
         this.props.history.push(`/users/${data.user.id}`)

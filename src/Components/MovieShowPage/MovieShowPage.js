@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import RatingModal from '../RatingModal/RatingModal';
 import {connect} from 'react-redux';
-import { addRatings } from '../../actions';
 
 class MovieShowPage extends React.Component {
 constructor() {
@@ -15,10 +14,9 @@ constructor() {
 }
 
   componentDidMount() {
-      let dateArray = this.props.movie.release_date.split('-');
-      let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
+    let dateArray = this.props.movie.release_date.split('-');
+    let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
     this.setState({ date: date })
-    this.getRatings()
   }
 
   show = () => {
@@ -43,16 +41,16 @@ constructor() {
           "rating": this.state.currentRating
       })
     })
-    .then(() => this.getRatings())
+    // .then(() => this.getRatings())
     .catch(error => console.log(error))
   }
 
   findYourRating() {
-    let rating = this.props.user.ratings.find(rating => rating.movie_id === this.props.movie.id)
+    let rating = this.props.user.ratings[0].ratings.find(rating => rating.movie_id === this.props.movie.id);
     if (rating) {
-      return rating.rating
+      return rating.rating;
     } else {
-      return false
+      return false;
     }
   }
 
@@ -92,8 +90,4 @@ const mapStateToProps = state => ({
   user: state.user,
 })
 
-const mapDispatchToProps = dispatch => ({
-  addRatings: (ratings) => dispatch(addRatings( ratings ))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
+export default connect(mapStateToProps)(MovieShowPage);
