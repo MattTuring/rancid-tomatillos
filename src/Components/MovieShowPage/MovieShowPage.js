@@ -11,14 +11,18 @@ constructor() {
   this.state = {
     show: false,
     currentRating: null,
-    date: null
+    date: null,
+    movieRating: null
   }
 }
 
   componentDidMount() {
     let dateArray = this.props.movie.release_date.split('-');
     let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
-    this.setState({ date: date })
+    this.setState({
+      date: date,
+      movieRating: this.findYourRating()
+    })
   }
 
   show = () => {
@@ -32,7 +36,7 @@ constructor() {
   }
 
   submitRating = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.userId}/ratings`, {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -43,8 +47,14 @@ constructor() {
           "rating": this.state.currentRating
       })
     })
-    .then(() => getRatings(this.props.user.id))
-    .then(data => this.props.addRatings(data))
+    .then(() => getRatings(this.props.user.id)
+      .then(data => {
+        this.props.addRatings(data)
+        this.setState({
+          movieRating: this.findYourRating()
+        })
+      })
+    )
     .catch(error => console.log(error))
   }
 
@@ -53,7 +63,7 @@ constructor() {
     if (rating) {
       return rating.rating;
     } else {
-      return false;
+      return null;
     }
   }
 
@@ -70,8 +80,8 @@ constructor() {
           <p>OVERVIEW: {this.props.movie.overview}</p>
           <p>RELEASE DATE: {this.state.date}</p>
           <p>AVERAGE RATING: {Math.round(this.props.movie.average_rating)}</p>
-          {this.findYourRating() ?
-            <p>YOUR RATING: {this.findYourRating()}</p> :
+          {this.state.movieRating ?
+            <p>YOUR RATING: {this.state.movieRating}</p> :
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
           }
           {this.state.show && <RatingModal
