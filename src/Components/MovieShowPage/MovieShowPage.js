@@ -11,18 +11,16 @@ constructor() {
   this.state = {
     show: false,
     currentRating: null,
-    date: null,
     movieRating: null
   }
 }
 
   componentDidMount() {
-    let dateArray = this.props.movie.release_date.split('-');
-    let date = `${dateArray[1]}-${dateArray[2]}-${dateArray[0]}`;
-    this.setState({
-      date: date,
-      movieRating: this.findYourRating()
-    })
+    if (this.props.user.loggedIn) {
+      this.setState({
+        movieRating: this.findYourRating()
+      })
+    }
   }
 
   show = () => {
