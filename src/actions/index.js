@@ -1,11 +1,11 @@
 export const addMovies = movies => ({
-    type: 'ADD_MOVIES',
-    movies
+  type: 'ADD_MOVIES',
+  movies
 });
 
 export const addRatings = ratings => ({
-    type: 'ADD_RATING',
-    ratings
+  type: 'ADD_RATING',
+  ratings
 });
 
 export const addUserState = userInfo => ({
@@ -13,7 +13,11 @@ export const addUserState = userInfo => ({
   userInfo
 });
 
-export const updateLoggedIn = login => ({
+export const updateLoggedIn = userInfo => ({
   type: 'UPDATE_IS_LOGGEDIN',
-  login
+  userInfo
 });
+
+export const changeLoading = () => ({
+  type: 'CHANGE_LOADING'
+})

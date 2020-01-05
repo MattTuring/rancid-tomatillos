@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
 import { addMovies, addRatings } from '../../actions';
@@ -41,7 +41,9 @@ class App extends React.Component {
             return (
               <>
                 <Header />
-                <MovieContainer />
+                {this.props.loading ?
+                <p>LOADING</p> :
+                <MovieContainer />}
               </>
             )
           }}
@@ -72,7 +74,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  loading: state.loading
 })
 
 const mapDispatchToProps = dispatch => ({
