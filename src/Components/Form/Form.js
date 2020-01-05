@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addUserState, addRatings } from '../../actions';
+import { addUserState, addRatings, changeLoading } from '../../actions';
 import { postUser, getRatings } from '../../fetchcalls';
 
 export class Form extends React.Component {
@@ -20,6 +20,7 @@ export class Form extends React.Component {
     if (this.state.username === '' || this.state.passwordLength > 0) {
       this.setState({ error: 'THE USERNAME OR PASSWORD IS INCORECT' })
     }
+    this.props.changeLoading();
     postUser('https://rancid-tomatillos.herokuapp.com/api/v1/login')
       .then(data => {
         this.setState({ id: data.user.id, loggedIn: true },() =>this.props.addUserState({
@@ -30,7 +31,10 @@ export class Form extends React.Component {
         }))
         this.props.history.push(`/users/${data.user.id}`)
         getRatings(this.state.id)
-          .then(data => this.props.addRatings(data))
+          .then(data => {
+            this.props.addRatings(data);
+            this.props.changeLoading();
+          })
       })
       .catch(error => console.log(error))
   }
@@ -51,7 +55,8 @@ export class Form extends React.Component {
 
 export const mapDispatchToProps = dispatch => ({
   addUserState: userinfo => dispatch(addUserState(userinfo)),
-  addRatings: (ratings) => dispatch(addRatings( ratings ))
+  addRatings: (ratings) => dispatch(addRatings( ratings )),
+  changeLoading: () => dispatch(changeLoading())
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Form))
