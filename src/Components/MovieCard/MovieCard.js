@@ -8,7 +8,7 @@ const MovieCard = ({ title, user, averageRating, id, poster}) => {
     if (rating) {
       return rating.rating;
     } else {
-      return null;
+      return 'NOT YET RATED';
     }
   }
 
