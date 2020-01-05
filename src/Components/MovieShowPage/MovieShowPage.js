@@ -78,10 +78,11 @@ constructor() {
           <p>OVERVIEW: {this.props.movie.overview}</p>
           <p>RELEASE DATE: {this.state.date}</p>
           <p>AVERAGE RATING: {Math.round(this.props.movie.average_rating)}</p>
-          {this.state.movieRating ?
+          {this.props.user.loggedIn ?
+            this.state.movieRating ?
             <p>YOUR RATING: {this.state.movieRating}</p> :
-            <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button>
-          }
+            <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button> :
+          <p className='login-alert'>LOG IN NOW TO RATE THIS MOVIE</p>}
           {this.state.show && <RatingModal
             show={this.show}
             addRating={this.addRating}
