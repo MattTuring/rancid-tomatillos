@@ -82,7 +82,9 @@ constructor() {
             this.state.movieRating ?
             <p>YOUR RATING: {this.state.movieRating}</p> :
             <button className='rate-button' onClick={this.show}>RATE THIS MOVIE</button> :
-          <p className='login-alert'>LOG IN NOW TO RATE THIS MOVIE</p>}
+            <Link to='/login'>
+              <button className='login-button'>LOG IN NOW TO RATE THIS MOVIE</button>
+            </Link>}
           {this.state.show && <RatingModal
             show={this.show}
             addRating={this.addRating}
