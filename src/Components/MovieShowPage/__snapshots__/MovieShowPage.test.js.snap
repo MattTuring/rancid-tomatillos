@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieShowPage should match the snapshot 1`] = `
+<section
+  className="movie-show-page"
+>
+  <Link
+    to="/users/3"
+  >
+    <button
+      className="go-back-button"
+    >
+      GO BACK
+    </button>
+  </Link>
+  <div
+    className="movie-info-container"
+  >
+    <div
+      className="movie-poster"
+      style={
+        Object {
+          "backgroundImage": "url(someURL)",
+        }
+      }
+    />
+    <div
+      className="movie-info-text"
+    >
+      <h2>
+        MOVIE TITLE
+      </h2>
+      <p>
+        OVERVIEW: 
+        Some overview
+      </p>
+      <p>
+        RELEASE DATE: 
+      </p>
+      <p>
+        AVERAGE RATING: 
+        6
+      </p>
+      <button
+        className="rate-button"
+        onClick={[Function]}
+      >
+        RATE THIS MOVIE
+      </button>
+    </div>
+  </div>
+</section>
+`;

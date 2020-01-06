@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getRatings, postRating } from '../../fetchcalls';
 import { addRatings } from '../../actions';
 
-class MovieShowPage extends React.Component {
+export class MovieShowPage extends React.Component {
 constructor() {
   super()
   this.state = {
@@ -89,7 +89,7 @@ constructor() {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   user: state.user,
 })
