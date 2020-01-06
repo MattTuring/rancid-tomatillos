@@ -31,3 +31,17 @@ export const getRatings = (id) => {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
     .then(response => response.json())
   }
+
+export const postRating = (userId, movieId, rating) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "movie_id": movieId,
+      "rating": rating
+    })
+  })
+}
