@@ -12,9 +12,14 @@ describe('App', () => {
             return Promise.resolve([{ movie1: 'name' }, { movie2: 'name' }, { movie3: 'name' }])
         });
     });
+
+    it('should match the App snapshot', () => {
+        let wrapper = shallow(<App />);
+        expect(wrapper).toMatchSnapshot();
+    })
     
     it('should invoke retrieveMovies after componentDidMount triggers', () => {
-        shallow(<App />);
+        let wrapper = shallow(<App />);
         expect(retrieveMovies).toHaveBeenCalled();
     });
     
