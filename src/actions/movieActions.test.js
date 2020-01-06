@@ -19,10 +19,10 @@ describe('actions', () => {
 
     it('should have a type of ADD_USER_STATE', () => {
         // Setup
-        const login = {};
+        const userInfo = {};
         const expectedAction = {
           type: 'ADD_USER_STATE',
-          login:{}
+          userInfo:{}
         };
 
         // Execution
@@ -34,14 +34,14 @@ describe('actions', () => {
 
     it('should have a type of UPDATE_IS_LOGGEDIN', () => {
         // Setup
-        const login = {};
+        const userInfo = {};
         const expectedAction = {
           type: 'UPDATE_IS_LOGGEDIN',
-          login:{}
+          userInfo:{}
         };
 
         // Execution
-        const result = actions.updateLoggedIn(login);
+        const result = actions.updateLoggedIn(userInfo);
 
         // Expectation
         expect(result).toEqual(expectedAction);
