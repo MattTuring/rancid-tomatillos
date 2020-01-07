@@ -41,12 +41,10 @@ exports[`MovieShowPage should match the snapshot 1`] = `
         AVERAGE RATING: 
         6
       </p>
-      <button
-        className="rate-button"
-        onClick={[Function]}
-      >
-        RATE THIS MOVIE
-      </button>
+      <p>
+        YOUR RATING: 
+        7
+      </p>
     </div>
   </div>
 </section>
