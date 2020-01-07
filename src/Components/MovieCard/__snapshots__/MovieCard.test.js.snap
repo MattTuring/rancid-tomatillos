@@ -19,9 +19,11 @@ exports[`MovieCard should match the snapshot with all data passed in correctly 1
     className="rating"
   >
     AVERAGE RATING: 
+    NaN
   </div>
+  <p />
   <Link
-    to="/movies/undefined"
+    to="/movies/fello"
   >
     <button>
       MORE
