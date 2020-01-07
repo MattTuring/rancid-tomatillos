@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme'
+import { shallow } from 'enzyme';
 import { Form }  from './Form';
 import { addUserState, addRatings, changeLoading } from '../../actions';
 import { mapDispatchToProps } from './form'
@@ -54,7 +54,7 @@ describe('Form', () => {
             loggedIn: false
         };
 
-        let expected =  {
+        const expected =  {
             id: '1',
             username: 'lucy@turing.io',
             password: 'password1',
@@ -67,6 +67,7 @@ describe('Form', () => {
 
 
         wrapper.instance().login()
+
             // mock http request
             window.fetch = jest.fn().mockImplementation(() => {
               return Promise.resolve({
@@ -129,5 +130,6 @@ it('calls dispatch with an addRatings action when addUserState is called', () =>
 
                expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 })
-
+        expect(wrapper.state()).toEqual(expected);
+    });
 });

@@ -9,7 +9,7 @@ import MovieContainer from '../MovieContainer/MovieContainer'
 import { retrieveMovies } from '../../fetchcalls';
 import MovieShowPage from '../MovieShowPage/MovieShowPage';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor() {
     super()
   }
@@ -73,12 +73,12 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies,
   loading: state.loading
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch( addMovies(movies) )
 })
 

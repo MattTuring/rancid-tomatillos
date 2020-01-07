@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const MovieCard = ({ title, user, averageRating, id, poster}) => {
+export const MovieCard = ({ title, user, averageRating, id, poster}) => {
   const findYourRating = () => {
     let rating = user.ratings[0].ratings.find(rating => rating.movie_id === id);
     if (rating) {
@@ -28,7 +28,7 @@ const MovieCard = ({ title, user, averageRating, id, poster}) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user
 })
 
