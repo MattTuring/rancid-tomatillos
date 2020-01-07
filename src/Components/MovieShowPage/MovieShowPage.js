@@ -99,3 +99,9 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
+
+Form.propTypes = {
+  show: PropTypes.boolean,
+  currentRating: PropTypes.number,
+  movieRating: PropTypes.number
+}
