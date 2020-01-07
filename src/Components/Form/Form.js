@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserState, addRatings, changeLoading } from '../../actions';
 import { postUser, getRatings } from '../../fetchcalls';
+import PropTypes from 'prop-types';
 
 export class Form extends React.Component {
   constructor() {
@@ -68,6 +69,6 @@ Form.propTypes = {
   username: PropTypes.string,
   passwordLength: PropTypes.number,
   error: PropTypes.string,
-  loggedIn: PropTypes.boolean,
+  loggedIn: PropTypes.bool,
   password: PropTypes.string,
 }
