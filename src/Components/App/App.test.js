@@ -54,12 +54,12 @@ describe('App', () => {
         let wrapper = shallow(<App />);
         expect(wrapper).toMatchSnapshot();
     })
-    
+
     it('should invoke retrieveMovies after componentDidMount triggers', () => {
         let wrapper = shallow(<App />);
         expect(retrieveMovies).toHaveBeenCalled();
     });
-    
+
     describe('mapsStateToProps', () => {
         it('should return only movies and loading properties from the store', () => {
             const mockState = {
@@ -72,20 +72,20 @@ describe('App', () => {
                 loading: true
             };
             const mappedProps = mapStateToProps(mockState);
-    
+
             expect(mappedProps).toEqual(expected);
         });
     });
-    
+
     describe('mapDispatchToProps', () => {
         it('calls dispatch with an addMovies action when addMovies is called',
             () => {
                 const mockDispatch = jest.fn();
                 const actionToDispatch = addMovies([{ sample: 'movie' }]);
                 const mappedProps = mapDispatchToProps(mockDispatch);
-    
+
                 mappedProps.addMovies([{ sample: 'movie' }]);
-    
+
                 expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
         });
     });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RatingModal = ({show, addRating, rating, submit, id}) => {
+export const RatingModal = ({show, addRating, rating, submit, id}) => {
     return(
       <article className='modal' onClick={(event) => addRating(event)}>
       <h1>SELECT YOUR RATING FOR THIS MOVIE:</h1>

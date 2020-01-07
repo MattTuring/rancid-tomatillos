@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieContainer should match the snapshot 1`] = `
+<div
+  className="movie-container"
+>
+  <Connect(MovieCard)
+    averageRating={7}
+    id={7}
+    key="7"
+    poster={7}
+    title={7}
+  />
+</div>
+`;

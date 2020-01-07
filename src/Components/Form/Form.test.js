@@ -130,6 +130,5 @@ it('calls dispatch with an addRatings action when addUserState is called', () =>
 
                expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 })
-        expect(wrapper.state()).toEqual(expected);
-    });
+
 });

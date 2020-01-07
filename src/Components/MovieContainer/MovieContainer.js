@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../MovieCard/MovieCard';
 
-const MovieContainer = ({ movies, user}) => {
+export const MovieContainer = ({ movies, user}) => {
 
   return (
     <div className='movie-container'>
@@ -21,7 +21,7 @@ const MovieContainer = ({ movies, user}) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies
 })
 
