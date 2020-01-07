@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import RatingModal from '../RatingModal/RatingModal';
 import { connect } from 'react-redux';
-import { getRatings } from '../../fetchcalls';
+import { getRatings, postRating } from '../../fetchcalls';
 import { addRatings } from '../../actions';
 
-class MovieShowPage extends React.Component {
+export class MovieShowPage extends React.Component {
 constructor() {
   super()
   this.state = {
@@ -34,17 +34,7 @@ constructor() {
   }
 
   submitRating = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${this.props.user.id}/ratings`, {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          "movie_id": this.props.movie.id,
-          "rating": this.state.currentRating
-      })
-    })
+    postRating(this.props.user.id, this.props.movie.id, this.state.currentRating)
     .then(() => getRatings(this.props.user.id)
       .then(data => {
         this.props.addRatings(data)
@@ -99,7 +89,7 @@ constructor() {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   user: state.user,
 })
