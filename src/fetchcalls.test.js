@@ -33,7 +33,7 @@ describe('retrieveMovies', () => {
           });
         });
     });
-    
+
     it('should be passed the correct url', () => {
         retrieveMovies()
 
@@ -51,12 +51,12 @@ describe('retrieveMovies', () => {
             });
           });
         expect(postUser()).rejects.toEqual(Error('Error fetching ideas'))
-        
+
     })
 })
 
 describe('postUser', () => {
-    let mockResponse = 
+    let mockResponse =
         {
             id:3,
             username:'lucy@turing.io',
@@ -85,10 +85,12 @@ describe('postUser', () => {
           });
         });
     });
-    
-    it('should be passed the correct url', () => {
-        postUser()
 
+    it('should be passed the correct url', () => {
+        postUser('https://rancid-tomatillos.herokuapp.com/api/v1/login', {
+            "email": 'lucy@turing.io',
+            "password": 'password1',
+        })
         expect(window.fetch).toHaveBeenCalledWith('https://rancid-tomatillos.herokuapp.com/api/v1/login', mockOptions);
     })
 
@@ -103,6 +105,6 @@ describe('postUser', () => {
             });
           });
         expect(postUser()).rejects.toEqual(Error('Error fetching ideas'))
-        
+
     })
 })

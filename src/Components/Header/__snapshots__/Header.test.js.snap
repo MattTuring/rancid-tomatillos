@@ -1,3 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header should match the snapshot 1`] = `undefined`;
+exports[`Header should match the snapshot 1`] = `
+<Fragment>
+  <div
+    className="header-background"
+  >
+    <nav>
+      <h1>
+        RANCID TOMATILLOS
+      </h1>
+      <Link
+        to="/login"
+      >
+        <button
+          className="login-button"
+        >
+          LOG IN
+        </button>
+      </Link>
+    </nav>
+  </div>
+  <div
+    className="film-strip"
+    style={
+      Object {
+        "backgroundImage": "url(film-strip.png)",
+      }
+    }
+  />
+</Fragment>
+`;
