@@ -62,3 +62,12 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Form))
+
+Form.propTypes = {
+  id: PropTypes.number,
+  username: PropTypes.string,
+  passwordLength: PropTypes.number,
+  error: PropTypes.string,
+  loggedIn: PropTypes.boolean,
+  password: PropTypes.string,
+}
