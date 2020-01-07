@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import RatingModal from '../RatingModal/RatingModal';
 import { connect } from 'react-redux';
 import { getRatings, postRating } from '../../fetchcalls';
 import { addRatings } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class MovieShowPage extends React.Component {
 constructor() {
@@ -100,8 +101,8 @@ export const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieShowPage);
 
-Form.propTypes = {
-  show: PropTypes.boolean,
+MovieShowPage.propTypes = {
+  show: PropTypes.bool,
   currentRating: PropTypes.number,
   movieRating: PropTypes.number
 }
