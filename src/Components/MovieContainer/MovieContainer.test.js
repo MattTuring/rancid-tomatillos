@@ -11,9 +11,9 @@ describe('MovieContainer', () => {
       poster_path:7,
         average_rating:7}]}
     />)
-  })
+  });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

@@ -23,6 +23,6 @@ export const MovieContainer = ({ movies, user}) => {
 
 export const mapStateToProps = state => ({
   movies: state.movies
-})
+});
 
-export default connect(mapStateToProps)(MovieContainer)
+export default connect(mapStateToProps)(MovieContainer);

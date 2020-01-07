@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieCard, mapStateToProps } from './MovieCard';
 
-jest.mock('../../fetchcalls.js')
+jest.mock('../../fetchcalls.js');
 
 describe('MovieCard', () => {
   it('should match the snapshot with all data passed in correctly', () => {
@@ -34,25 +34,4 @@ describe('MovieCard', () => {
         expect(mappedProps).toEqual(expected);
     });
   });
-
-  // it('should call the findYourRating method', () => {
-  //   // Setup
-  //   const email = 'foster@ask.com'
-  //   // const findYourRatingMock = jest.fn();
-  //   const wrapper = shallow(
-  //     <MovieCard
-  //     key='yello'
-  //     id='fello'
-  //     title='FOSTER MOVIE'
-  //     poster='undefined'
-  //     averageRating='say hello'
-  //       user={email}
-        
-  //     />
-  //   );
- 
-  //   // Expectation
-  //   expect(wrapper.instance().findYourRating()).toEqual();
-  // });
-    
 });

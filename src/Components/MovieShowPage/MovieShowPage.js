@@ -7,14 +7,14 @@ import { addRatings } from '../../actions';
 import PropTypes from 'prop-types';
 
 export class MovieShowPage extends React.Component {
-constructor() {
-  super()
-  this.state = {
-    show: false,
-    currentRating: null,
-    movieRating: null
+  constructor() {
+    super()
+    this.state = {
+      show: false,
+      currentRating: null,
+      movieRating: null
+    }
   }
-}
 
   componentDidMount() {
     if (this.props.user.loggedIn) {
