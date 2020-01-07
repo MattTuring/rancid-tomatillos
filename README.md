@@ -1,6 +1,6 @@
 # Rancid Tomatillos
 
-### [Deployed App](https://rancidtomatillosturing.herokuapp.com/)
+### [Deployed App](http://rancidtomatillosturing.herokuapp.com/)
 
 * by [Kayla Wood](https://github.com/kaylaewood)
 * by  [Foster Taylor](https://github.com/foster55f)
