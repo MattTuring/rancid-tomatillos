@@ -1,8 +1,8 @@
 # Rancid Tomatillos
 
-* by Kayla Wood[github account](https://github.com/kaylaewood)
-* by Foster Taylor [github account](https://github.com/foster55f)
-* by Matt Towarnicky [github account](https://github.com/MattTuring)
+* by [Kayla Wood](https://github.com/kaylaewood)
+* by  [Foster Taylor](https://github.com/foster55f)
+* by  [Matt Towarnicky](https://github.com/MattTuring)
 
 
 This project was a React app built for Movie critics and Movie fans!
