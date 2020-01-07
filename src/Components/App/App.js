@@ -3,7 +3,7 @@ import './App.scss';
 import { Route } from 'react-router-dom'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
-import { addMovies, addRatings } from '../../actions';
+import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
 import MovieContainer from '../MovieContainer/MovieContainer'
 import { retrieveMovies } from '../../fetchcalls';
@@ -12,6 +12,9 @@ import MovieShowPage from '../MovieShowPage/MovieShowPage';
 export class App extends React.Component {
   constructor() {
     super()
+    this.state = {
+      
+    }
   }
 
   componentDidMount() {

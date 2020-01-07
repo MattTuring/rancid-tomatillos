@@ -1,5 +1,4 @@
 export const postUser = (url, body) => {
-  console.log(body);
     return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', {
         method: 'POST',
         headers: {
@@ -9,7 +8,7 @@ export const postUser = (url, body) => {
         body: JSON.stringify(
             body
         )
-    }) .then(response => {
+    }).then(response => {
         if (!response.ok) {
           throw Error('Error fetching ideas');
         }
